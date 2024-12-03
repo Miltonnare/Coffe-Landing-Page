@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Page</title>
+    <link rel="stylesheet" href="Coffee.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="javascript:void(0);" class="nav-toggle">☰</a>
+            <div class="nav-menu">
+                <a href="#home">HOME</a>
+                <a href="#about">ABOUT</a>
+                <a href="#services">SERVICES</a>
+                <a href="#gallery">GALLERY</a>
+                <a href="#contact">CONTACT</a>
+            </div>
+        </nav>
+    </header>
+    <section class="hero" id="home">
+        <h1>Welcome to Coffee Paradise</h1>
+        <p>Discover the best coffee in Africa</p>
+        <button class="scroll-btn">Learn More</button>
+    </section>
+    <section class="AboutMe" id="about">
+        <h2>About Us</h2>
+        <p>Coffee remains one of the most favorable beverages in Africa. It remains one of the most valuable cash crops in the country.</p>
+        <p>With the dynamic change of lifestyle, coffee has remained reliable in cutting off weight due to the belief that it increases metabolism.</p>
+    </section>
+    <section class="Services" id="services">
+        <div>
+            <h2>Our Services</h2>
+            <ol>
+                <li>Provision of flavorful drinks at your service</li>
+                <li>Supply of food products</li>
+                <li>Connecting farmers with the market</li>
+                <li>Provision of loans to farmers</li>
+                <li>Provides the best beverages at different outlets in the country</li>
+                <li>Continuous supply of coffee of different varieties</li>
+            </ol>
+        </div>
+        <div>
+            <h2>Why Choose Us</h2>
+            <p>Unison ensures more connectivity with farmers</p>
+            <p>We are happy to provide such marvelous services all over the country</p>
+        </div>
+    </section>
+    <section class="Gallery" id="gallery">
+        <h2>Our Gallery</h2>
+        <div>
+            <img src="baristaCoffee.png" alt="Barista Coffee">
+            <img src="brownCoffee.png" alt="Brown Coffee">
+            <img src="deliciousCoffee.png" alt="Delicious Coffee">
+            <img src="deliciousCoffee.png" alt="Delicious Coffee">
+            <img src="topview.png" alt="Top View Coffee">
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Coffee Page. All rights reserved.</p>
+        <nav>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </footer>
+    <script >
+        document.addEventListener('DOMContentLoaded', function() {
+    // Mobile navigation toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    navToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Lightbox effect for gallery images
+    const galleryImages = document.querySelectorAll('.Gallery img');
+    galleryImages.forEach(image => {
+        image.addEventListener('click', function() {
+            const src = this.getAttribute('src');
+            const lightbox = document.createElement('div');
+            lightbox.classList.add('lightbox');
+            lightbox.innerHTML = `
+                <div class="lightbox-content">
+                    <img src="${src}" alt="">
+                    <span class="lightbox-close">&times;</span>
+                </div>
+            `;
+            document.body.appendChild(lightbox);
+
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            closeBtn.addEventListener('click', function() {
+                document.body.removeChild(lightbox);
+            });
+
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    document.body.removeChild(lightbox);
+                }
+            });
+        });
+    });
+});
+
+    </script>
+</body>
+</html>
